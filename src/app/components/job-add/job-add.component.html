@@ -1,0 +1,35 @@
+
+
+<div class="container mt-4" *ngIf="jobFormGroup">
+    <h2>Add New Job</h2>
+<form [formGroup]="jobFormGroup">   
+<div class="form-group">
+    <div class="col-md-3">
+    <label>Status</label>
+    <select class="form-select" formControlName="status" 
+    [ngClass]="{'is-invalid': submitted && jobFormGroup.controls['status'].errors}">
+        <option selected></option>
+        <option>New</option>
+        <option>In Progress</option>
+        <option>Done</option>
+      </select>
+      <div *ngIf="submitted && jobFormGroup.controls['status'].errors" class="invalid-feedback">
+        <div *ngIf="jobFormGroup.controls['status'].errors">The Status is required!</div>
+    </div>
+</div>
+</div>
+<div class="form-group">
+    <div class="col-md-3">
+    <label>Description</label>
+    <input type="text" class="form-control" formControlName="description"
+    [ngClass]="{'is-invalid': submitted && jobFormGroup.controls['description'].errors}">
+    <div *ngIf="submitted && jobFormGroup.controls['description'].errors" class="invalid-feedback">
+        <div *ngIf="jobFormGroup.controls['description'].errors">Description is required!</div>
+    </div>
+</div>
+</div>
+<button class="btn btn-success mt-3" (click)="onSaveJob()">Save</button>
+</form>
+
+
+</div>
